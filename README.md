@@ -63,7 +63,48 @@ X11 Fan Master 是一个用于 **Supermicro X11 系列主板** 的 Windows 小�
 - ♻ **BMC auto mode / BMC 自动模式**
   - 一键恢复 BMC 默认风扇策略（发送 `-raw 0x30 0x45 0x01 0x01`）
   - 重置后滑条归零，不再强制 PWM
+Requirements / 环境要求
 
+English
+
+Windows 10 / 11 (64-bit)
+
+Supermicro X11 series motherboard with BMC/IPMI
+
+Supermicro IPMICFG for Windows (IPMICFG-Win.exe, tested with v1.33.0)
+
+Administrator privileges (required for IPMI & WMI access)
+
+中文
+
+Windows 10 / 11 64 位
+
+带 BMC / IPMI 的 Supermicro X11 系列主板
+
+Supermicro 官方 IPMICFG 工具（IPMICFG-Win.exe，测试版为 1.33.0）
+
+管理员权限运行（访问 IPMI 和 WMI 需要）
+
+⚠ 安全提示 / Disclaimer
+本工具会覆盖 BMC 自带的风扇策略。请确保曲线设置合理，并密切监控 CPU/GPU 温度。
+由于使用的是 OEM IPMI 命令，本项目与 Supermicro 官方无关，风险自负。
+
+Related & referenced projects / 相关引用项目
+
+本项目在设计与实现过程中参考/使用了以下开源项目与工具：
+
+KCORES / fan-lord
+
+提供了基于 IPMICFG 的 Python 图形界面风扇控制示例。本项目最初的手动风扇控制逻辑、IPMI RAW 命令调用方式等均参考了该项目，并在此基础上增加自动温控曲线与 LibreHardwareMonitor 集成。
+
+LibreHardwareMonitor / LibreHardwareMonitor
+
+用于硬件传感器读数和 WMI 接口，项目中直接随 exe 一起打包运行。
+
+Supermicro IPMICFG
+官方 IPMI 配置工具，用于通过 -raw 命令控制风扇 PWM、重置 BMC 风扇模式等。
+
+如果你觉得本项目对你有帮助，也推荐顺手给上述上游项目点一颗 ⭐ 以示支持。
 
 
 
